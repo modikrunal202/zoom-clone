@@ -7,7 +7,7 @@ const { ExpressPeerServer } = require('peer');
 const peerServer = ExpressPeerServer(server, {
     debug: true
 });
-
+const port = process.env.PORT || 3030
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use('/peerjs', peerServer);
@@ -32,6 +32,6 @@ io.on("connection", (socket) => {
     })
 })
 
-server.listen(3030, () => {
-    console.log("Server running on 3030")
+server.listen(port, () => {
+    console.log("Server running on ", port)
 });
